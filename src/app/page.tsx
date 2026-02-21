@@ -1,35 +1,46 @@
 "use client"
 import { Canvas } from "@react-three/fiber"
-import { OrbitControls, Box } from "@react-three/drei"
+import { OrbitControls, Stars } from "@react-three/drei"
+import { Office } from "./Office"
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24 bg-slate-900 text-white">
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Claw Virtual Office - Dev Mode 👣
-        </p>
+    <main className="flex min-h-screen flex-col items-center justify-between bg-black text-white">
+      <div className="z-10 w-full p-6 font-mono text-sm flex justify-between items-center absolute top-0">
+        <div className="bg-zinc-800/50 backdrop-blur-xl border border-white/10 p-4 rounded-xl">
+          Claw Virtual Office <span className="text-cyan-400">v0.1</span> 👣
+        </div>
+        <div className="text-xs opacity-50">
+          Status: Synchronizing with Reality...
+        </div>
       </div>
 
-      <div className="relative flex place-items-center w-full h-[60vh]">
-        <Canvas>
-          <ambientLight intensity={0.5} />
-          <pointLight position={[10, 10, 10]} />
-          <Box args={[1, 1, 1]}>
-            <meshStandardMaterial color="orange" />
-          </Box>
-          <OrbitControls />
+      <div className="w-full h-screen">
+        <Canvas camera={{ position: [5, 5, 5], fov: 50 }}>
+          <color attach="background" args={["#050505"]} />
+          <fog attach="fog" args={["#050505", 5, 20]} />
+          
+          <ambientLight intensity={0.2} />
+          <pointLight position={[10, 10, 10]} intensity={1.5} />
+          <spotLight position={[-5, 5, 5]} angle={0.15} penumbra={1} intensity={2} castShadow />
+          
+          <Office />
+          <Stars radius={100} depth={50} count={5000} factor={4} saturation={0} fade speed={1} />
+          <OrbitControls makeDefault minPolarAngle={0} maxPolarAngle={Math.PI / 1.75} />
         </Canvas>
       </div>
 
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <div className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30">
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Status: Initialized{" "}
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Base Next.js + Three.js project created.
+      <div className="absolute bottom-10 left-10 max-w-sm">
+        <div className="bg-zinc-900/80 backdrop-blur-md border border-white/5 p-6 rounded-2xl shadow-2xl">
+          <h2 className="text-xl font-bold mb-2">Workspace Alpha</h2>
+          <p className="text-sm text-zinc-400 leading-relaxed">
+            Ваш цифровий кабінет розгортається. Додано робочу зону, базове освітлення та імітацію терміналу Claw.
           </p>
+          <div className="mt-4 flex gap-2">
+            <div className="h-1 w-full bg-cyan-500/20 rounded-full overflow-hidden">
+              <div className="h-full bg-cyan-500 w-1/3 animate-pulse"></div>
+            </div>
+          </div>
         </div>
       </div>
     </main>
