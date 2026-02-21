@@ -1,7 +1,8 @@
 import { useRef } from "react"
 import { useFrame } from "@react-three/fiber"
-import { Box, Plane } from "@react-three/drei"
+import { Box, Plane, Html } from "@react-three/drei"
 import * as THREE from "three"
+import { TerminalScreen } from "./TerminalScreen"
 
 export function Office() {
   return (
@@ -25,9 +26,22 @@ export function Office() {
       </group>
 
       {/* Screen (Claw Display) */}
-      <Box args={[1.2, 0.7, 0.05]} position={[0, 0.45, -0.4]}>
-        <meshStandardMaterial color="#111" emissive="#00ffff" emissiveIntensity={0.2} />
-      </Box>
+      <group position={[0, 0.45, -0.4]}>
+        <Box args={[1.2, 0.7, 0.05]}>
+          <meshStandardMaterial color="#111" />
+        </Box>
+        {/* Display Content */}
+        <Html
+          transform
+          occlude
+          distanceFactor={1.5}
+          position={[0, 0, 0.03]}
+        >
+          <div className="w-[300px] h-[175px] select-none">
+            <TerminalScreen />
+          </div>
+        </Html>
+      </group>
 
       {/* Walls */}
       <Plane args={[10, 5]} position={[0, 1.5, -5]}>
