@@ -38,7 +38,7 @@ export default function Home() {
           </p>
           <div className="mt-4 flex gap-2">
             <div className="h-1 w-full bg-cyan-500/20 rounded-full overflow-hidden">
-              <div className="h-full bg-cyan-500 w-1/3 animate-pulse"></div>
+              <div className="h-full bg-cyan-500 w-full animate-pulse"></div>
             </div>
           </div>
         </div>
