@@ -14,8 +14,18 @@ import React from 'react'
 
 const ISO_ANGLE = 30; // degrees
 
+interface CubeProps {
+  w: number;
+  h: number;
+  d: number;
+  colorTop?: string;
+  colorFront?: string;
+  colorSide?: string;
+  className?: string;
+}
+
 // 3D Cuboid Helper
-const Cube = ({ 
+const Cube: React.FC<CubeProps> = ({ 
   w, h, d, 
   colorTop = "#DEB887", 
   colorFront = "#C19A6B", 
@@ -182,29 +192,39 @@ const ISODesk = ({ label, isForeground = false, opacity = 1 }: { label: string, 
 }
 
 export function Office() {
-  // Infinite rows of desks
-  const rows = [0, 1, 2, 3, 4, 5, 6, 7, 8];
+  // Infinite rows of desks - only show active agents
+  const agents = [
+    { label: "айтішнік розраб", active: true }
+  ];
   
   return (
     <div className="relative w-full h-full overflow-hidden bg-[#FDF5E6]">
       {/* Background: Distant Horizon */}
       <div className="absolute top-0 w-full h-full bg-gradient-to-b from-[#FFFACD] via-[#FDF5E6] to-[#DEB887]/40" />
       
-      {/* Infinite Grid of Floor Tiles */}
+      {/* Tile Floor Grid (Плитка) */}
       <div className="absolute inset-0 z-0">
          <div 
-           className="absolute inset-0 opacity-10" 
+           className="absolute inset-0 opacity-20" 
            style={{ 
              backgroundImage: `
-               linear-gradient(30deg, #8B4513 12%, transparent 12.5%, transparent 87%, #8B4513 87.5%, #8B4513),
-               linear-gradient(150deg, #8B4513 12%, transparent 12.5%, transparent 87%, #8B4513 87.5%, #8B4513),
-               linear-gradient(30deg, #8B4513 12%, transparent 12.5%, transparent 87%, #8B4513 87.5%, #8B4513),
-               linear-gradient(150deg, #8B4513 12%, transparent 12.5%, transparent 87%, #8B4513 87.5%, #8B4513),
-               linear-gradient(60deg, #A0522D 25%, transparent 25.5%, transparent 75%, #A0522D 75%, #A0522D),
-               linear-gradient(60deg, #A0522D 25%, transparent 25.5%, transparent 75%, #A0522D 75%, #A0522D)
+               linear-gradient(30deg, #8B4513 1px, transparent 1px),
+               linear-gradient(150deg, #8B4513 1px, transparent 1px)
              `,
-             backgroundSize: '100px 173px',
-             backgroundPosition: '0 0, 0 0, 50px 87px, 50px 87px, 0 0, 50px 87px'
+             backgroundSize: '80px 140px',
+             backgroundPosition: '0 0'
+           }} 
+         />
+         {/* Second layer for tile effect */}
+         <div 
+           className="absolute inset-0 opacity-5" 
+           style={{ 
+             backgroundImage: `
+               linear-gradient(30deg, #A0522D 2px, transparent 2px),
+               linear-gradient(150deg, #A0522D 2px, transparent 2px)
+             `,
+             backgroundSize: '160px 280px',
+             backgroundPosition: '40px 70px'
            }} 
          />
       </div>
@@ -212,18 +232,19 @@ export function Office() {
       {/* Office Content Area */}
       <div className="relative h-full w-full flex flex-col items-center justify-center pt-96">
         
-        {/* Infinite Row Container */}
+        {/* Row Container */}
         <div className="relative w-full flex flex-col items-center gap-24 transform-gpu">
-           {rows.map((row) => {
+           {agents.map((agent, index) => {
+             const row = index;
              const scale = 1 - (row * 0.12);
              const opacity = 1 - (row * 0.14);
              const zIndex = 100 - row;
              const translateY = -row * 150;
-             const translateX = (row % 2 === 0 ? row : -row) * 20; // Alternate slight shift
+             const translateX = 0; 
 
              return (
                <div 
-                 key={row}
+                 key={index}
                  className="absolute transition-all duration-700"
                  style={{ 
                    transform: `translate(${translateX}px, ${translateY}px) scale(${scale})`,
@@ -232,12 +253,27 @@ export function Office() {
                  }}
                >
                  <ISODesk 
-                    label={row === 0 ? "айтішнік розраб" : row === 1 ? "сусід" : `колега ${row}`} 
+                    label={agent.label} 
                     isForeground={row === 0}
                  />
                </div>
              )
            })}
+           
+           {/* Future potential empty desks (visual depth only, no labels) */}
+           {[1, 2, 3].map((row) => (
+              <div 
+                key={`empty-${row}`}
+                className="absolute transition-all duration-700 pointer-events-none"
+                style={{ 
+                  transform: `translate(${(row % 2 === 0 ? 300 : -300)}px, ${-row * 200}px) scale(${1 - row * 0.2})`,
+                  opacity: 0.1,
+                  zIndex: 50 - row
+                }}
+              >
+                <div className="w-64 h-32 border-2 border-[#8B4513]/20 rounded-md" style={{ transform: `rotateX(60deg) rotateZ(45deg)` }} />
+              </div>
+           ))}
         </div>
       </div>
 
