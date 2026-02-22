@@ -32,9 +32,10 @@ interface DeskProps {
   label: string;
   isMe?: boolean;
   character?: string;
+  status?: string;
 }
 
-const Desk: React.FC<DeskProps> = ({ label, isMe = false, character = "🧑‍💻" }) => (
+const Desk: React.FC<DeskProps> = ({ label, isMe = false, character = "🧑‍💻", status = "Working..." }) => (
   <div className="relative group scale-[1.8]">
     {/* Lamp above desk */}
     <div className="absolute -top-48 left-1/2 -translate-x-1/2 flex flex-col items-center pointer-events-none opacity-80">
@@ -64,6 +65,10 @@ const Desk: React.FC<DeskProps> = ({ label, isMe = false, character = "🧑‍�
 
     {/* Character */}
     <div className="absolute -top-32 left-1/2 -translate-x-1/2 flex flex-col items-center">
+      {/* Status Text */}
+      <div className="absolute -top-16 px-2 py-0.5 bg-white/10 backdrop-blur-md border border-white/20 rounded-full text-[6px] text-white italic whitespace-nowrap animate-pulse">
+        {status}
+      </div>
       <div className={`mb-3 px-3 py-1 bg-black border-2 ${isMe ? 'border-cyan-400 text-cyan-400 shadow-[0_0_15px_#22d3ee66]' : 'border-[#d4af37] text-white'} text-[8px] font-bold uppercase tracking-widest rounded shadow-2xl whitespace-nowrap`}>
         {label}
       </div>
@@ -169,15 +174,34 @@ export function Office() {
             </div>
           </IsometricObject>
 
-          {/* MAIN CHARACTERS (Fixed Spacing) */}
-          {/* Desk 1: Developer */}
-          <IsometricObject x={-1.5} y={1.5}>
-            <Desk label="айтішнік розраб" isMe={true} />
+          {/* MAIN CHARACTERS - SPREAD OUT */}
+          
+          {/* Row 1 */}
+          <IsometricObject x={-2.5} y={2.5}>
+            <Desk label="айтішнік розраб" isMe={true} character="🧑‍💻" status="Pushing to main..." />
           </IsometricObject>
 
-          {/* Desk 2: Asystentus */}
-          <IsometricObject x={1.5} y={1.5}>
-            <Desk label="Асистентус" character="🤖" />
+          <IsometricObject x={2.5} y={2.5}>
+            <Desk label="Асистентус" character="🤖" status="Commanding..." />
+          </IsometricObject>
+
+          {/* Row 2 */}
+          <IsometricObject x={-2.5} y={0} scale={0.9}>
+            <Desk label="Дослідник" character="🔍" status="Analyzing data..." />
+          </IsometricObject>
+
+          <IsometricObject x={2.5} y={0} scale={0.9}>
+            <Desk label="Креативник" character="🎨" status="Brainstorming..." />
+          </IsometricObject>
+
+          {/* New Character */}
+          <IsometricObject x={0} y={1.5} scale={0.95}>
+            <Desk label="Дослідник" character="🧐" status="Researching..." />
+          </IsometricObject>
+
+          {/* Row 3 / Side */}
+          <IsometricObject x={0} y={4} scale={0.95}>
+            <Desk label="Бізнес-Аналітик" character="📊" status="Calculating ROI..." />
           </IsometricObject>
 
           {/* Props for Environment Density */}
