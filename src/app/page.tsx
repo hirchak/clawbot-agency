@@ -1,53 +1,29 @@
 "use client"
-import { Canvas } from "@react-three/fiber"
-import { Stars } from "@react-three/drei"
 import { Office } from "./Office"
 import { TaskList } from "./TaskList"
 import { FinanceHUD } from "./FinanceHUD"
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen bg-[#020202] text-white overflow-hidden selection:bg-cyan-500/30">
-      {/* 3D Scene - Main View */}
-      <div className="flex-grow h-screen relative group">
-        <Canvas 
-          orthographic 
-          camera={{ 
-            position: [15, 15, 15], 
-            zoom: 100, 
-            near: 0.1, 
-            far: 2000 
-          }} 
-          shadows
-        >
-          <color attach="background" args={["#010101"]} />
-          <fog attach="fog" args={["#010101", 10, 40]} />
-          
-          <ambientLight intensity={0.15} />
-          <pointLight position={[10, 10, 10]} intensity={1.5} castShadow />
-          <spotLight 
-            position={[-8, 12, 8]} 
-            angle={0.25} 
-            penumbra={1} 
-            intensity={4} 
-            castShadow 
-            shadow-mapSize={[1048, 1048]}
-          />
-          
-          <Office />
-          <Stars radius={100} depth={50} count={3000} factor={4} saturation={0} fade speed={1} />
-        </Canvas>
+    <main className="flex min-h-screen bg-[#020617] text-slate-200 overflow-hidden selection:bg-cyan-500/30 font-sans">
+      {/* 2D Stylized Office View */}
+      <div className="flex-grow h-screen relative group overflow-hidden">
+        
+        <Office />
 
-        {/* HUD Elements Overlaying Canvas */}
-        <div className="absolute inset-0 pointer-events-none p-8 flex flex-col justify-between">
+        {/* HUD Elements Overlaying Office */}
+        <div className="absolute inset-0 pointer-events-none p-8 flex flex-col justify-between z-20">
           <div className="flex justify-between items-start">
-            <div className="bg-black/60 backdrop-blur-md border border-white/5 p-4 rounded-xl flex items-center gap-4 shadow-2xl">
-               <div className="w-10 h-10 rounded-lg bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center">
-                  <div className="w-2 h-2 rounded-full bg-cyan-500 animate-ping" />
+            <div className="bg-slate-900/80 backdrop-blur-md border-2 border-cyan-500/30 p-5 rounded-lg flex items-center gap-5 shadow-[4px_4px_0px_rgba(6,182,212,0.2)]">
+               <div className="w-12 h-12 rounded bg-cyan-500/10 border border-cyan-500/40 flex items-center justify-center relative">
+                  <div className="w-3 h-3 rounded-full bg-cyan-400 animate-ping absolute" />
+                  <div className="w-3 h-3 rounded-full bg-cyan-500 relative z-10" />
                </div>
                <div>
-                  <h1 className="font-bold text-lg tracking-tight leading-none mb-1">Офіс <span className="text-cyan-500 font-mono text-sm ml-1">v2.1-Alpha</span></h1>
-                  <p className="text-[10px] text-zinc-500 uppercase tracking-widest font-medium">Моніторинг інфраструктури субагентів Асистентус</p>
+                  <h1 className="font-black text-2xl tracking-tighter leading-none mb-1 italic uppercase text-white">
+                    Асистентус <span className="text-cyan-400 not-italic font-mono text-sm ml-1 underline decoration-2">CMD_CENTER</span>
+                  </h1>
+                  <p className="text-[10px] text-cyan-500/70 uppercase tracking-[0.2em] font-bold">Система управління віртуальним офісом</p>
                </div>
             </div>
 
@@ -56,36 +32,41 @@ export default function Home() {
 
           <div className="flex justify-between items-end">
              <div className="max-w-xs space-y-4">
-                <div className="bg-zinc-950/80 backdrop-blur-xl border border-white/10 p-5 rounded-2xl shadow-2xl pointer-events-auto hover:border-cyan-500/30 transition-all group/card">
-                   <div className="flex items-center gap-2 mb-3">
-                      <div className="w-1.5 h-1.5 rounded-full bg-cyan-500 shadow-[0_0_8px_rgba(6,182,212,1)]" />
-                      <h2 className="text-xs font-bold uppercase tracking-wider text-zinc-200">Інфраструктурний вузол-1</h2>
+                <div className="bg-slate-900/90 backdrop-blur-md border-2 border-slate-700 p-6 rounded-lg shadow-[6px_6px_0px_rgba(0,0,0,0.5)] pointer-events-auto hover:border-cyan-500/50 transition-all group/card">
+                   <div className="flex items-center gap-3 mb-4">
+                      <div className="w-2 h-2 bg-cyan-400 shadow-[0_0_10px_rgba(34,211,238,1)]" />
+                      <h2 className="text-xs font-black uppercase tracking-widest text-white italic">Статус розробки</h2>
                    </div>
-                   <p className="text-xs text-zinc-400 leading-relaxed font-light mb-4">
-                     Режим &apos;Нескінченний Офіс&apos; активовано. Моніторинг розширеної мережі субагентів (Bruce Almighty Mode).
+                   <p className="text-[11px] text-slate-300 leading-relaxed font-medium mb-5 border-l-2 border-cyan-500/30 pl-3">
+                     Перехід на стилізований 2D інтерфейс завершено. Продуктивність оптимізована. <span className="text-cyan-400">айтішнік розраб</span> на позиції.
                    </p>
-                   <div className="flex gap-4">
-                      <div className="text-[9px] uppercase text-zinc-500 font-bold border-r border-white/5 pr-4">CPU <span className="text-zinc-200 ml-1">14.2%</span></div>
-                      <div className="text-[9px] uppercase text-zinc-500 font-bold">MEM <span className="text-zinc-200 ml-1">4.2GB</span></div>
+                   <div className="flex gap-6">
+                      <div className="flex flex-col">
+                        <span className="text-[9px] uppercase text-slate-500 font-black tracking-tighter">Навантаження</span>
+                        <span className="text-xs text-white font-mono font-bold">12.5%</span>
+                      </div>
+                      <div className="flex flex-col">
+                        <span className="text-[9px] uppercase text-slate-500 font-black tracking-tighter">Пам&apos;ять</span>
+                        <span className="text-xs text-white font-mono font-bold">1.8 GB</span>
+                      </div>
                    </div>
                 </div>
              </div>
 
-             <div className="flex flex-col items-end gap-2">
-                <div className="bg-black/60 px-3 py-1 rounded text-[10px] font-mono text-cyan-500 border border-cyan-500/20">
-                   ПРЯМА ТРАНСЛЯЦІЯ
+             <div className="flex flex-col items-end gap-3">
+                <div className="bg-cyan-500 text-slate-950 px-4 py-1 font-black text-[11px] uppercase tracking-tighter skew-x-[-12deg] shadow-[4px_4px_0px_rgba(255,255,255,0.2)]">
+                   LIVE: АКТИВНА СЕСІЯ
                 </div>
-                <div className="text-[10px] font-mono opacity-20 text-zinc-500 text-right">
-                  AUTH_ID: asistentus_infinite_node<br/>
-                  STABILITY: НОМІНАЛЬНА
+                <div className="text-[10px] font-mono text-slate-500 text-right font-bold uppercase tracking-tight">
+                  NODE_ID: OC-DEV-ALPHA-01<br/>
+                  REGION: KYIV_UKRAINE
                 </div>
              </div>
           </div>
         </div>
 
-        {/* Scanline / Vignette Effects */}
-        <div className="absolute inset-0 pointer-events-none shadow-[inset_0_0_200px_rgba(0,0,0,0.8)]" />
-        <div className="absolute inset-0 pointer-events-none opacity-[0.03] bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] bg-[length:100%_2px,3px_100%]" />
+        {/* CRT Scanline / Noise Overlay */}
+        <div className="absolute inset-0 pointer-events-none opacity-[0.05] bg-[url('https://grainy-gradients.vercel.app/noise.svg')] mix-blend-overlay" />
       </div>
 
       {/* Task List - Right Panel */}
