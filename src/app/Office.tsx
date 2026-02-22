@@ -64,11 +64,11 @@ export function Office() {
       {/* Desk Layout */}
       <group position={[0, 0.25, 0]}>
         {/* Main Dev Desk */}
-        <Desk position={[0, 0, 0]} active={true} label="Dev Agent" />
+        <Desk position={[0, 0, 0]} active={true} label="Розробник" />
         
         {/* Other Desks */}
-        <Desk position={[-4, 0, -2]} label="Research Node" />
-        <Desk position={[4, 0, -2]} label="Task Processor" />
+        <Desk position={[-4, 0, -2]} label="Аналітик" />
+        <Desk position={[4, 0, -2]} label="Моніторинг" />
       </group>
 
       {/* Walls / Environment */}

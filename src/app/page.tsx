@@ -45,18 +45,18 @@ export default function Home() {
                   <div className="w-2 h-2 rounded-full bg-cyan-500 animate-ping" />
                </div>
                <div>
-                  <h1 className="font-bold text-lg tracking-tight leading-none mb-1">Office <span className="text-cyan-500 font-mono text-sm ml-1">v2.0-Alpha</span></h1>
-                  <p className="text-[10px] text-zinc-500 uppercase tracking-widest font-medium">Claw Sub-Agent Infrastructure Monitoring</p>
+                  <h1 className="font-bold text-lg tracking-tight leading-none mb-1">Офіс <span className="text-cyan-500 font-mono text-sm ml-1">v2.0-Alpha</span></h1>
+                  <p className="text-[10px] text-zinc-500 uppercase tracking-widest font-medium">Моніторинг інфраструктури субагентів Кло</p>
                </div>
             </div>
 
             <div className="bg-black/40 backdrop-blur-sm border border-white/5 p-3 rounded-lg flex flex-col gap-1 items-end shadow-xl">
                <div className="flex items-center gap-2">
-                  <span className="text-[10px] text-zinc-500 uppercase font-mono tracking-tighter">System Latency:</span>
-                  <span className="text-[10px] text-green-500 font-mono font-bold tracking-tight">12ms</span>
+                  <span className="text-[10px] text-zinc-500 uppercase font-mono tracking-tighter">Затримка системи:</span>
+                  <span className="text-[10px] text-green-500 font-mono font-bold tracking-tight">12мс</span>
                </div>
                <div className="flex items-center gap-2">
-                  <span className="text-[10px] text-zinc-500 uppercase font-mono tracking-tighter">Load:</span>
+                  <span className="text-[10px] text-zinc-500 uppercase font-mono tracking-tighter">Навантаження:</span>
                   <div className="w-16 h-1 bg-white/5 rounded-full overflow-hidden">
                      <div className="w-[42%] h-full bg-cyan-500 shadow-[0_0_8px_rgba(6,182,212,0.8)]" />
                   </div>
@@ -69,10 +69,10 @@ export default function Home() {
                 <div className="bg-zinc-950/80 backdrop-blur-xl border border-white/10 p-5 rounded-2xl shadow-2xl pointer-events-auto hover:border-cyan-500/30 transition-all group/card">
                    <div className="flex items-center gap-2 mb-3">
                       <div className="w-1.5 h-1.5 rounded-full bg-cyan-500 shadow-[0_0_8px_rgba(6,182,212,1)]" />
-                      <h2 className="text-xs font-bold uppercase tracking-wider text-zinc-200">Infrastructure Node-1</h2>
+                      <h2 className="text-xs font-bold uppercase tracking-wider text-zinc-200">Інфраструктурний вузол-1</h2>
                    </div>
                    <p className="text-xs text-zinc-400 leading-relaxed font-light mb-4">
-                     Sub-agent dev-agent-overhaul-dashboard is currently performing overhaul procedures on primary interface components.
+                     Субагент dev-agent виконує процедури оновлення основних компонентів інтерфейсу та локалізації.
                    </p>
                    <div className="flex gap-4">
                       <div className="text-[9px] uppercase text-zinc-500 font-bold border-r border-white/5 pr-4">CPU <span className="text-zinc-200 ml-1">4.2%</span></div>
@@ -83,11 +83,11 @@ export default function Home() {
 
              <div className="flex flex-col items-end gap-2">
                 <div className="bg-black/60 px-3 py-1 rounded text-[10px] font-mono text-cyan-500 border border-cyan-500/20">
-                   LIVE BROADCAST
+                   ПРЯМА ТРАНСЛЯЦІЯ
                 </div>
                 <div className="text-[10px] font-mono opacity-20 text-zinc-500 text-right">
-                  AUTH_ID: agent_main_subagent_overhaul<br/>
-                  STABILITY: NOMINAL
+                  AUTH_ID: claw_main_node<br/>
+                  STABILITY: НОМІНАЛЬНА
                 </div>
              </div>
           </div>
