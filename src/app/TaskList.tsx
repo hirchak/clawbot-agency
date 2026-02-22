@@ -18,7 +18,7 @@ const dummyTasks: Task[] = [
 
 export function TaskList() {
   return (
-    <div className="flex flex-col h-full bg-zinc-900/80 backdrop-blur-xl border-l border-white/10 w-80 p-6 overflow-y-auto">
+    <div className="flex flex-col h-full bg-zinc-900/80 backdrop-blur-xl border-t lg:border-t-0 lg:border-l border-white/10 w-full lg:w-80 p-6 overflow-y-auto">
       <div className="flex items-center justify-between mb-8">
         <h2 className="text-xl font-bold tracking-tight text-white">Завдання системи</h2>
         <span className="text-[10px] bg-cyan-500/20 text-cyan-400 px-2 py-1 rounded border border-cyan-500/30 font-mono uppercase">
