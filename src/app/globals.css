@@ -1,8 +1,12 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #020617; /* Dark navy base */
+  --foreground: #f8fafc;
+  --accent: #38bdf8;
+  --office-line: rgba(56, 189, 248, 0.2);
+  --desk-color: #1e293b;
+  --floor-grid: #0f172a;
 }
 
 @theme inline {
@@ -12,15 +16,110 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  overflow: hidden;
+}
+
+/* Anime/Cartoon Stylized Office Elements */
+
+.office-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background: var(--background);
+  background-image: 
+    linear-gradient(var(--floor-grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--floor-grid) 1px, transparent 1px);
+  background-size: 100px 100px;
+  perspective: 1000px;
+  overflow: hidden;
+}
+
+.infinite-floor {
+  position: absolute;
+  top: 50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background-image: 
+    linear-gradient(var(--office-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--office-line) 1px, transparent 1px);
+  background-size: 80px 80px;
+  transform: rotateX(60deg) translateY(-20%);
+  transform-origin: center top;
+  opacity: 0.3;
+  animation: move-floor 20s linear infinite;
+  mask-image: linear-gradient(to top, rgba(0,0,0,1) 20%, rgba(0,0,0,0) 80%);
+}
+
+@keyframes move-floor {
+  from { background-position: 0 0; }
+  to { background-position: 0 1000px; }
+}
+
+.isometric-desk {
+  position: absolute;
+  width: 120px;
+  height: 60px;
+  background: var(--desk-color);
+  border: 2px solid var(--accent);
+  border-radius: 4px;
+  box-shadow: 8px 8px 0px rgba(0,0,0,0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.isometric-desk::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: 10px;
+    width: 40px;
+    height: 30px;
+    background: #0f172a;
+    border: 1px solid var(--accent);
+    border-radius: 2px;
+}
+
+.agent-avatar {
+    position: absolute;
+    top: -25px;
+    width: 30px;
+    height: 30px;
+    background: var(--accent);
+    border-radius: 50%;
+    border: 2px solid #fff;
+    box-shadow: 0 0 15px var(--accent);
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+.vignette {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle, transparent 40%, rgba(2, 6, 23, 0.8) 100%);
+  pointer-events: none;
+}
+
+.scanline {
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    transparent 50%,
+    rgba(0, 0, 0, 0.1) 51%,
+    transparent 51%
+  );
+  background-size: 100% 4px;
+  pointer-events: none;
+  opacity: 0.2;
 }

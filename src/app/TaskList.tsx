@@ -9,7 +9,7 @@ interface Task {
 const dummyTasks: Task[] = [
   { id: 1, title: 'Додати 2D/3D візуалізацію в дашборд', status: 'active' },
   { id: 2, title: 'Мобільна версія дашборду', status: 'todo' },
-  { id: 3, title: 'Інтеграція голосового керування для Асистентут', status: 'todo' },
+  { id: 3, title: 'Інтеграція голосового керування для Асистентус', status: 'todo' },
   { id: 4, title: 'Щотижневий звіт по токенах та бюджету', status: 'todo' },
   { id: 5, title: 'П’ятничний огляд роботи субагентів', status: 'todo' },
   { id: 6, title: 'Ініціалізація проєкту Дашборду', status: 'done' },
