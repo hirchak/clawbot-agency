@@ -19,27 +19,27 @@ const dummyTasks: Task[] = [
 
 export function TaskList() {
   return (
-    <div className="flex flex-col h-full bg-[#2c3e50] border-l-4 border-[#1a252f] w-full lg:w-96 p-8 overflow-y-auto no-scrollbar z-30 shadow-[-10px_0_30px_rgba(0,0,0,0.5)]">
-      <div className="flex items-center justify-between mb-10">
-        <h2 className="text-xl font-black text-[#d4af37] uppercase tracking-tighter flex items-center gap-2 font-pixel">
-          <span>📋</span> MISSION LOG
+    <div className="flex flex-col h-full bg-[#0f172a]/95 backdrop-blur-xl border-l-4 border-[#d4af37] w-full lg:w-96 p-8 overflow-y-auto no-scrollbar z-30 shadow-[-10px_0_30px_#000] font-pixel">
+      <div className="flex items-center justify-between mb-10 border-b-2 border-[#d4af37]/20 pb-6">
+        <h2 className="text-xl font-bold text-[#d4af37] uppercase tracking-tighter flex items-center gap-3">
+          <span className="animate-pulse">💾</span> MISSION LOG
         </h2>
-        <span className="text-[9px] bg-[#d4af37] text-[#1a1a1a] px-3 py-1 rounded border border-white/20 font-black uppercase tracking-widest">
-          HQ V3.0
+        <span className="text-[10px] bg-[#d4af37] text-black px-3 py-1 font-bold tracking-widest border-2 border-black">
+          v4.0.0
         </span>
       </div>
 
       <div className="space-y-10">
         <div>
-          <h3 className="text-[10px] uppercase tracking-[0.3em] text-cyan-400 mb-6 font-black flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" /> ACTIVE OPS
+          <h3 className="text-[11px] uppercase tracking-[0.2em] text-cyan-400 mb-6 font-bold flex items-center gap-2">
+            <span className="w-2 h-2 bg-cyan-400 shadow-[0_0_8px_#22d3ee]" /> PRIORITY OPS
           </h3>
           <div className="space-y-5">
             {dummyTasks.filter(t => t.status === 'active').map(task => (
-              <div key={task.id} className="bg-[#1a252f] border-2 border-cyan-400/30 p-5 rounded-lg shadow-[4px_4px_0px_rgba(34,211,238,0.2)] hover:border-cyan-400 transition-all group">
+              <div key={task.id} className="bg-black/40 border-2 border-cyan-400/50 p-5 shadow-[4px_4px_0px_#000] hover:border-cyan-400 transition-all group relative">
+                <div className="absolute top-0 right-0 w-2 h-2 bg-cyan-400" />
                 <div className="flex items-start gap-4">
-                  <div className="mt-1 w-2 h-2 bg-cyan-400 rounded-full group-hover:animate-ping" />
-                  <p className="text-xs text-white font-bold leading-snug font-pixel tracking-tight">{task.title}</p>
+                  <p className="text-[11px] text-white font-bold leading-relaxed tracking-tight">{task.title}</p>
                 </div>
               </div>
             ))}
@@ -47,29 +47,29 @@ export function TaskList() {
         </div>
 
         <div>
-          <h3 className="text-[10px] uppercase tracking-[0.3em] text-white/40 mb-6 font-black flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-white/20" /> BACKLOG
+          <h3 className="text-[11px] uppercase tracking-[0.2em] text-white/40 mb-6 font-bold flex items-center gap-2">
+            <span className="w-2 h-2 bg-white/20" /> QUEUED TASKS
           </h3>
           <div className="space-y-4">
             {dummyTasks.filter(t => t.status === 'todo').map(task => (
-              <div key={task.id} className="bg-[#1a252f]/50 border border-white/10 p-4 rounded hover:bg-[#1a252f] transition-colors border-l-4 border-l-yellow-600/50">
-                <p className="text-[11px] text-white/60 font-bold tracking-tight font-pixel">{task.title}</p>
+              <div key={task.id} className="bg-black/20 border border-white/10 p-4 hover:bg-black/40 transition-colors border-l-4 border-l-[#d4af37]/50">
+                <p className="text-[11px] text-white/60 font-medium tracking-tight leading-relaxed">{task.title}</p>
               </div>
             ))}
           </div>
         </div>
 
         <div>
-          <h3 className="text-[10px] uppercase tracking-[0.3em] text-green-500 mb-6 font-black flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-green-500" /> COMPLETED
+          <h3 className="text-[11px] uppercase tracking-[0.2em] text-green-500/60 mb-6 font-bold flex items-center gap-2">
+            <span className="w-2 h-2 bg-green-500/40" /> ARCHIVED
           </h3>
-          <div className="space-y-3 opacity-60">
+          <div className="space-y-3 opacity-40">
             {dummyTasks.filter(t => t.status === 'done').map(task => (
               <div key={task.id} className="flex items-center gap-3 px-2">
-                <div className="w-4 h-4 border border-green-500 rounded flex items-center justify-center bg-green-500/10">
-                   <span className="text-green-500 text-[10px] font-bold">✓</span>
+                <div className="w-4 h-4 border border-green-500/50 flex items-center justify-center">
+                   <span className="text-green-500 text-[10px]">✓</span>
                 </div>
-                <p className="text-[10px] text-white/40 font-bold line-through italic font-pixel">{task.title}</p>
+                <p className="text-[10px] text-white font-medium line-through italic tracking-tight leading-relaxed">{task.title}</p>
               </div>
             ))}
           </div>
@@ -77,14 +77,14 @@ export function TaskList() {
       </div>
 
       <div className="mt-auto pt-8 border-t border-white/10">
-        <div className="bg-black/20 rounded p-4 text-[9px] font-bold text-white/30 border border-white/5 shadow-inner font-mono">
+        <div className="bg-black/40 p-4 text-[10px] font-bold text-white/30 border border-[#d4af37]/10 shadow-inner">
           <div className="flex justify-between mb-2">
-            <span>UPLINK STATUS:</span>
-            <span className="text-green-500 text-right font-black">ENCRYPTED</span>
+            <span className="tracking-widest">ENCRYPTION:</span>
+            <span className="text-cyan-400 text-right uppercase">PIXEL-64-MAX</span>
           </div>
           <div className="flex justify-between">
-             <span>LOCAL TIME:</span>
-             <span className="text-right text-white/60 uppercase">{new Date().toLocaleTimeString()}</span>
+             <span className="tracking-widest">CLOCK:</span>
+             <span className="text-right text-[#d4af37] uppercase">{new Date().toLocaleTimeString()}</span>
           </div>
         </div>
       </div>
