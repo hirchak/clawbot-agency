@@ -128,12 +128,12 @@ export function Office() {
         <div className="relative w-full h-full">
           
           {/* MASCOT */}
-          <div className="absolute top-[-80px] left-1/2 -translate-x-1/2 opacity-[0.05] pointer-events-none">
-            <div className="text-[400px]">🦞</div>
+          <div className="absolute top-[-120px] left-1/2 -translate-x-1/2 opacity-[0.08] pointer-events-none transition-opacity hover:opacity-20">
+            <div className="text-[450px]">🦞</div>
           </div>
 
           {/* MEETING ZONE */}
-          <IsometricObject x={1.8} y={-0.5}>
+          <IsometricObject x={2.5} y={-0.8}>
             <div className="w-[450px] h-[280px] bg-[#5a1a1a] border-[6px] border-black rounded-sm shadow-[20px_20px_0px_rgba(0,0,0,0.3)] flex items-center justify-center relative">
               <div className="absolute inset-4 border-2 border-white/5 opacity-20 bg-[radial-gradient(#fff_1px,transparent_1px)] bg-[size:20px_20px]" />
               <div className="w-[320px] h-24 bg-[#3d2b1f] border-[4px] border-black shadow-2xl relative">
@@ -153,11 +153,11 @@ export function Office() {
           </IsometricObject>
 
           {/* PROPS */}
-          <IsometricObject x={-2.2} y={0.5}>
+          <IsometricObject x={-2.5} y={0.2}>
             <div className="text-9xl filter drop-shadow-2xl">🌿</div>
           </IsometricObject>
           
-          <IsometricObject x={-2.2} y={-1.2}>
+          <IsometricObject x={-2.5} y={-1.5}>
             <div className="flex flex-col items-center">
               <div className="w-14 h-24 bg-cyan-100/30 border-[4px] border-white/20 rounded-t-full relative">
                 <div className="absolute bottom-4 w-full h-1/2 bg-cyan-400/20 animate-pulse" />
@@ -166,12 +166,12 @@ export function Office() {
             </div>
           </IsometricObject>
 
-          {/* AGENTS */}
-          <IsometricObject x={-0.2} y={1.2}>
+          {/* AGENTS - FIXED SPACING (No more overlap) */}
+          <IsometricObject x={-0.8} y={1.5}>
             <Desk label="айтішнік розраб" isMe={true} />
           </IsometricObject>
 
-          <IsometricObject x={0.8} y={1.2}>
+          <IsometricObject x={0.8} y={1.5}>
             <Desk label="Асистентус" character="👣" />
           </IsometricObject>
 
