@@ -47,7 +47,7 @@ export default function Home() {
                </div>
                <div>
                   <h1 className="font-bold text-lg tracking-tight leading-none mb-1">Офіс <span className="text-cyan-500 font-mono text-sm ml-1">v2.1-Alpha</span></h1>
-                  <p className="text-[10px] text-zinc-500 uppercase tracking-widest font-medium">Моніторинг інфраструктури субагентів Кло</p>
+                  <p className="text-[10px] text-zinc-500 uppercase tracking-widest font-medium">Моніторинг інфраструктури субагентів Асистентут</p>
                </div>
             </div>
 
@@ -76,7 +76,7 @@ export default function Home() {
                    ПРЯМА ТРАНСЛЯЦІЯ
                 </div>
                 <div className="text-[10px] font-mono opacity-20 text-zinc-500 text-right">
-                  AUTH_ID: claw_infinite_node<br/>
+                  AUTH_ID: asistentut_infinite_node<br/>
                   STABILITY: НОМІНАЛЬНА
                 </div>
              </div>

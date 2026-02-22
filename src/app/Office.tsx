@@ -83,7 +83,7 @@ export function Office() {
       {/* Desk Layout */}
       <group position={[0, 0.25, 5]}>
         {/* Main Dev Desk in the foreground */}
-        <Desk position={[0, 0, 0]} active={true} label="Головний термінал" />
+        <Desk position={[0, 0, 0]} active={true} label="айтішнік розраб" />
         
         {/* Infinite Rows */}
         <group position={[0, 0, -8]}>

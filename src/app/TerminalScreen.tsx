@@ -9,7 +9,7 @@ interface LogEntry {
 
 export function TerminalScreen() {
   const [logs, setLogs] = useState<LogEntry[]>([
-    { timestamp: "18:00:01", level: "INFO", message: "Claw OS v1.0.4 initializing..." },
+    { timestamp: "18:00:01", level: "INFO", message: "Asistentut OS v1.0.4 initializing..." },
     { timestamp: "18:00:02", level: "INFO", message: "Neural grid handshake: SUCCESS" },
     { timestamp: "18:00:03", level: "SUCCESS", message: "System core: ONLINE" },
     { timestamp: "18:00:05", level: "INFO", message: "Loading sub-agent orchestration protocols..." },
@@ -86,7 +86,7 @@ export function TerminalScreen() {
 
       {/* Footer Info */}
       <div className="mt-2 pt-1 border-t border-cyan-900/30 flex justify-between items-center opacity-40 text-[7px] uppercase tracking-[0.2em]">
-        <span>User: Admin@Claw</span>
+        <span>User: Admin@Asistentut</span>
         <span>Node: Alpha-01</span>
       </div>
     </div>
