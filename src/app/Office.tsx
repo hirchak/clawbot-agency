@@ -2,8 +2,8 @@
 import React, { useState, useEffect } from 'react'
 
 /**
- * Асистентус v7.0: PERFECT HQ RECONSTRUCTION
- * Density, Scale, and Perspective matching reference.
+ * Асистентус v7.1: СПРАВЖНІЙ ІГРОВИЙ ШТАБ
+ * Виправлено накладання об'єктів та покращено глибину.
  */
 
 interface IsoProps {
@@ -18,8 +18,8 @@ const IsometricObject: React.FC<IsoProps> = ({ x, y, children, z = 0, scale = 1 
   <div 
     className="absolute transition-all duration-700"
     style={{ 
-      left: `calc(50% + ${(x - y) * 120}px)`, 
-      top: `calc(35% + ${(x + y) * 60}px - ${z}px)`,
+      left: `calc(50% + ${(x - y) * 140}px)`, 
+      top: `calc(35% + ${(x + y) * 70}px - ${z}px)`,
       zIndex: Math.floor((x + y) * 100) + 1000,
       transform: `scale(${scale})`
     }}
@@ -35,12 +35,12 @@ interface DeskProps {
 }
 
 const Desk: React.FC<DeskProps> = ({ label, isMe = false, character = "🧑‍💻" }) => (
-  <div className="relative group scale-[2.0]">
+  <div className="relative group scale-[1.8]">
     {/* Lamp above desk */}
-    <div className="absolute -top-40 left-1/2 -translate-x-1/2 flex flex-col items-center pointer-events-none">
-       <div className="w-1 h-20 bg-zinc-800" />
-       <div className="w-16 h-8 bg-yellow-400/90 rounded-t-full shadow-[0_20px_40px_rgba(250,204,21,0.4)]" />
-       <div className="w-40 h-60 bg-yellow-400/5 blur-3xl -mt-10" />
+    <div className="absolute -top-48 left-1/2 -translate-x-1/2 flex flex-col items-center pointer-events-none opacity-80">
+       <div className="w-1 h-32 bg-zinc-800" />
+       <div className="w-12 h-6 bg-yellow-400 rounded-t-full shadow-[0_10px_30px_#facc15]" />
+       <div className="w-32 h-40 bg-yellow-400/5 blur-3xl -mt-10" />
     </div>
 
     {/* Desk Surface */}
@@ -54,6 +54,9 @@ const Desk: React.FC<DeskProps> = ({ label, isMe = false, character = "🧑‍�
             <div className="w-3/4 h-0.5 bg-cyan-400/20" />
         </div>
       </div>
+      
+      {/* Accessories */}
+      <div className="absolute top-2 right-4 w-4 h-4 bg-white border-2 border-black rounded-full" />
     </div>
 
     {/* Chair */}
@@ -61,7 +64,7 @@ const Desk: React.FC<DeskProps> = ({ label, isMe = false, character = "🧑‍�
 
     {/* Character */}
     <div className="absolute -top-32 left-1/2 -translate-x-1/2 flex flex-col items-center">
-      <div className={`mb-3 px-3 py-1 bg-black border-2 ${isMe ? 'border-cyan-400 text-cyan-400' : 'border-[#d4af37] text-white'} text-[8px] font-bold uppercase tracking-widest rounded shadow-2xl whitespace-nowrap`}>
+      <div className={`mb-3 px-3 py-1 bg-black border-2 ${isMe ? 'border-cyan-400 text-cyan-400 shadow-[0_0_15px_#22d3ee66]' : 'border-[#d4af37] text-white'} text-[8px] font-bold uppercase tracking-widest rounded shadow-2xl whitespace-nowrap`}>
         {label}
       </div>
       <div className="text-7xl filter drop-shadow-2xl animate-bounce" style={{ animationDuration: '4s' }}>
@@ -92,67 +95,73 @@ export function Office() {
     <div className="relative w-full h-full bg-[#0a0a0a] overflow-hidden">
       
       {/* 1. WALL (15%) */}
-      <div className="absolute top-0 w-full h-[15%] bg-[#1a1a2e] border-b-[8px] border-zinc-900 z-10">
+      <div className="absolute top-0 w-full h-[15%] bg-[#1a1a2e] border-b-[8px] border-zinc-900 z-10 flex items-center">
          {/* Clock */}
-         <div className="absolute top-4 left-1/2 -translate-x-1/2 w-12 h-12 bg-white border-4 border-zinc-800 rounded-full flex items-center justify-center shadow-lg">
-           <div className="w-1 h-4 bg-black absolute bottom-1/2 origin-bottom rotate-45" />
+         <div className="absolute top-4 left-1/2 -translate-x-1/2 w-14 h-14 bg-white border-4 border-zinc-800 rounded-full flex items-center justify-center shadow-lg z-20">
+           <div className="w-1 h-5 bg-black absolute bottom-1/2 origin-bottom rotate-45" />
            <div className="w-2 h-2 bg-zinc-900 rounded-full" />
          </div>
 
          {/* Whiteboard */}
-         <div className="absolute top-2 left-[20%] w-40 h-24 bg-white border-4 border-zinc-800 shadow-xl p-2 overflow-hidden">
-            <div className="flex gap-1 mb-2">
-               <div className="w-3 h-3 bg-yellow-200 border border-zinc-300 rotate-3" />
-               <div className="w-3 h-3 bg-pink-200 border border-zinc-300 -rotate-2" />
+         <div className="absolute top-2 left-[25%] w-48 h-28 bg-white border-4 border-zinc-800 shadow-xl p-3 overflow-hidden">
+            <div className="flex gap-2 mb-2">
+               <div className="w-4 h-4 bg-yellow-200 border border-zinc-300 rotate-3" />
+               <div className="w-4 h-4 bg-pink-200 border border-zinc-300 -rotate-2" />
+               <div className="w-4 h-4 bg-cyan-200 border border-zinc-300 rotate-6" />
             </div>
             <div className="space-y-1 opacity-10">
-               <div className="w-full h-1 bg-zinc-400" />
-               <div className="w-2/3 h-1 bg-zinc-400" />
+               <div className="w-full h-1.5 bg-zinc-400" />
+               <div className="w-2/3 h-1.5 bg-zinc-400" />
             </div>
          </div>
 
-         {/* Bookshelves on the Wall */}
-         <div className="absolute top-2 left-[5%] transform scale-50 origin-top">
+         {/* Bookshelves */}
+         <div className="absolute top-2 left-[10%] transform scale-50 origin-top">
             <Bookshelf />
          </div>
-         <div className="absolute top-2 right-[5%] transform scale-50 origin-top">
+         <div className="absolute top-2 right-[10%] transform scale-50 origin-top">
             <Bookshelf />
          </div>
       </div>
 
       {/* 2. FLOOR (85%) */}
       <div className="absolute bottom-0 w-full h-[85%] bg-[#1c1c1c]">
-        {/* Dark wood texture */}
-        <div className="absolute inset-0 opacity-40 bg-[linear-gradient(#2a2a2a_2px,transparent_2px),linear-gradient(90deg,#2a2a2a_2px,transparent_2px)] bg-[size:100px_100px]" 
-          style={{ transform: 'perspective(1000px) rotateX(60deg) scale(3)', transformOrigin: 'top' }}
+        {/* Dark wood planks texture */}
+        <div className="absolute inset-0 opacity-50" 
+          style={{ 
+            backgroundImage: `url("data:image/svg+xml,%3Csvg width='160' height='40' viewBox='0 0 160 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h160v40H0z' fill='none'/%3E%3Cpath d='M0 39h160v1H0z' fill='%23000'/%3E%3Cpath d='M79 0h1v40h-1z' fill='%23000'/%3E%3C/svg%3E")`,
+            backgroundSize: '320px 80px',
+            transform: 'perspective(1000px) rotateX(60deg) scale(3)', 
+            transformOrigin: 'top' 
+          }}
         />
 
         {/* 3. ISOMETRIC ASSETS */}
         <div className="relative w-full h-full">
           
-          {/* MASCOT (Center, Large) */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-20 pointer-events-none z-0">
-            <div className="text-[300px] filter blur-sm">🦞</div>
-          </div>
-          <div className="absolute top-[40%] left-1/2 -translate-x-1/2 z-[500] pointer-events-none">
-            <div className="text-[200px] filter drop-shadow-[0_0_30px_rgba(239,68,68,0.5)]">🦞</div>
+          {/* MASCOT (Center Mural) */}
+          <div className="absolute top-[30%] left-1/2 -translate-x-1/2 opacity-10 pointer-events-none z-0">
+            <div className="text-[400px] filter blur-[1px]">🦞</div>
+            <div className="text-center font-bold tracking-[1.5em] text-white -mt-10 text-xl opacity-20">OPENCLAW</div>
           </div>
 
-          {/* MEETING AREA (Large) */}
-          <IsometricObject x={1.5} y={-1.5} scale={1.5}>
+          {/* MEETING AREA (Large, Right) */}
+          <IsometricObject x={2.5} y={-1.5} scale={1.2}>
             <div className="relative">
               {/* Rug */}
-              <div className="absolute -inset-10 bg-[#4a1a1a] border-4 border-black/40 rounded-xl shadow-2xl -z-10" />
-              {/* Table */}
-              <div className="w-[300px] h-40 bg-[#3d2b1f] border-[6px] border-black shadow-2xl flex items-center justify-center">
-                 <div className="w-full h-full bg-[radial-gradient(#000_1px,transparent_1px)] bg-[size:10px_10px] opacity-10" />
+              <div className="absolute -inset-12 bg-[#5a1a1a] border-4 border-black/60 rounded-sm shadow-2xl -z-10 overflow-hidden">
+                 <div className="absolute inset-2 border-2 border-white/5 opacity-20 bg-[radial-gradient(#fff_1px,transparent_1px)] bg-[size:20px_20px]" />
               </div>
-              {/* Chairs */}
+              {/* Table */}
+              <div className="w-[320px] h-48 bg-[#3d2b1f] border-[6px] border-black shadow-2xl flex items-center justify-center relative">
+                 <div className="absolute inset-2 border border-white/5" />
+              </div>
+              {/* Chairs around table */}
               {[...Array(6)].map((_, i) => (
-                <div key={i} className="absolute w-12 h-12 bg-zinc-900 border-[3px] border-black rounded-lg shadow-xl" 
+                <div key={i} className="absolute w-12 h-12 bg-[#1a1a2e] border-[3px] border-black rounded shadow-lg" 
                   style={{ 
-                    top: i < 3 ? '-20px' : 'auto', 
-                    bottom: i >= 3 ? '-20px' : 'auto',
+                    top: i < 3 ? '-25px' : 'auto', 
+                    bottom: i >= 3 ? '-25px' : 'auto',
                     left: `${(i % 3) * 35 + 5}%` 
                   }} 
                 />
@@ -160,28 +169,36 @@ export function Office() {
             </div>
           </IsometricObject>
 
-          {/* MAIN CHARACTERS (Larger) */}
-          <IsometricObject x={-1.2} y={1.2}>
+          {/* MAIN CHARACTERS (Fixed Spacing) */}
+          {/* Desk 1: Developer */}
+          <IsometricObject x={-1.5} y={1.5}>
             <Desk label="айтішнік розраб" isMe={true} />
           </IsometricObject>
 
-          <IsometricObject x={1.2} y={1.2}>
+          {/* Desk 2: Asystentus */}
+          <IsometricObject x={1.5} y={1.5}>
             <Desk label="Асистентус" character="🤖" />
           </IsometricObject>
 
-          {/* Props for density */}
-          <IsometricObject x={-2.5} y={-1}>
+          {/* Props for Environment Density */}
+          <IsometricObject x={-3} y={-1}>
             <div className="text-9xl filter drop-shadow-2xl">🪴</div>
           </IsometricObject>
-          <IsometricObject x={2.5} y={1}>
-            <div className="text-9xl filter drop-shadow-2xl">☕</div>
+          
+          <IsometricObject x={-3} y={0.5}>
+            <div className="flex flex-col items-center">
+              <div className="w-16 h-28 bg-cyan-100/20 border-[4px] border-white/10 rounded-t-full relative">
+                <div className="absolute bottom-4 w-full h-1/2 bg-cyan-400/10 animate-pulse" />
+              </div>
+              <div className="w-20 h-12 bg-gray-500 border-x-[4px] border-b-[6px] border-gray-700" />
+            </div>
           </IsometricObject>
 
         </div>
       </div>
 
-      {/* 4. VIGNETTE */}
-      <div className="absolute inset-0 pointer-events-none z-[5000] shadow-[inset_0_0_200px_rgba(0,0,0,0.9)]" />
+      {/* 4. POST-PROCESSING */}
+      <div className="absolute inset-0 pointer-events-none z-[5000] shadow-[inset_0_0_300px_rgba(0,0,0,0.8)]" />
     </div>
   )
 }
