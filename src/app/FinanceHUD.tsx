@@ -1,48 +1,49 @@
+"use client"
 import React from 'react';
 
 export function FinanceHUD() {
   return (
-    <div className="bg-slate-900/90 backdrop-blur-md border-2 border-slate-700 p-5 rounded-lg flex flex-col gap-4 shadow-[6px_6px_0px_rgba(0,0,0,0.5)] min-w-[240px] pointer-events-auto hover:border-cyan-500/30 transition-all z-30">
-      <div className="flex items-center gap-3 mb-1">
-        <div className="w-2 h-2 bg-cyan-500 shadow-[0_0_10px_rgba(6,182,212,1)]" />
-        <h2 className="text-[10px] font-black uppercase tracking-[0.2em] text-white font-mono italic">Фінанси та Токени</h2>
+    <div className="bg-white border-4 border-[#5C4033] p-6 rounded-2xl flex flex-col gap-6 shadow-[8px_8px_0px_rgba(92,64,51,0.1)] min-w-[280px] pointer-events-auto transition-transform hover:-translate-y-1 z-30">
+      <div className="flex items-center gap-3 mb-2">
+        <div className="text-2xl">💰</div>
+        <h2 className="text-lg font-black uppercase tracking-tight text-[#5C4033]">Фінанси та Токени</h2>
       </div>
       
-      <div className="space-y-4">
+      <div className="space-y-6">
         {/* Daily Usage */}
-        <div className="space-y-2">
+        <div className="space-y-3">
           <div className="flex justify-between items-end">
-            <span className="text-[10px] text-slate-500 uppercase font-black tracking-tighter">Денне споживання</span>
-            <span className="text-xs text-cyan-400 font-mono font-black tracking-tighter italic">297,209</span>
+            <span className="text-sm text-[#8B4513] font-bold uppercase">Сьогоднішні витрати</span>
+            <span className="text-md text-[#5C4033] font-black">297,209 <span className="text-xs opacity-60">токени</span></span>
           </div>
-          <div className="w-full h-2 bg-slate-800 rounded-sm overflow-hidden border border-slate-700">
-            <div className="w-[65%] h-full bg-cyan-500 shadow-[0_0_12px_rgba(6,182,212,0.8)]" />
+          <div className="w-full h-4 bg-[#F5F5DC] rounded-full overflow-hidden border-2 border-[#5C4033]">
+            <div className="w-[65%] h-full bg-[#DEB887] border-r-2 border-[#5C4033]" />
           </div>
-          <div className="flex justify-between items-center text-[9px] font-mono font-bold">
-            <span className="text-slate-600 uppercase italic">Витрати</span>
-            <span className="text-white bg-slate-800 px-2 rounded-sm">$0.03</span>
+          <div className="flex justify-between items-center text-xs font-bold text-[#8B4513]">
+            <span className="italic">Загалом:</span>
+            <span className="bg-[#F5F5DC] px-3 py-1 rounded-full border-2 border-[#5C4033]/20 text-[#5C4033]">$0.03</span>
           </div>
         </div>
 
         {/* Monthly Usage */}
-        <div className="space-y-2">
+        <div className="space-y-3">
           <div className="flex justify-between items-end">
-            <span className="text-[10px] text-slate-500 uppercase font-black tracking-tighter">Місячний ліміт</span>
-            <span className="text-xs text-slate-400 font-mono font-black tracking-tighter italic">854,120</span>
+            <span className="text-sm text-[#8B4513] font-bold uppercase">Місячний ліміт</span>
+            <span className="text-md text-[#5C4033] font-black">854,120 <span className="text-xs opacity-60">токени</span></span>
           </div>
-          <div className="w-full h-2 bg-slate-800 rounded-sm overflow-hidden border border-slate-700">
-            <div className="w-[30%] h-full bg-slate-600" />
+          <div className="w-full h-4 bg-[#F5F5DC] rounded-full overflow-hidden border-2 border-[#5C4033]">
+            <div className="w-[30%] h-full bg-[#8B4513] border-r-2 border-[#5C4033]" />
           </div>
-          <div className="flex justify-between items-center text-[9px] font-mono font-bold">
-            <span className="text-slate-600 uppercase italic">Прогноз</span>
-            <span className="text-white bg-slate-800 px-2 rounded-sm">$0.09</span>
+          <div className="flex justify-between items-center text-xs font-bold text-[#8B4513]">
+            <span className="italic">Прогноз:</span>
+            <span className="bg-[#F5F5DC] px-3 py-1 rounded-full border-2 border-[#5C4033]/20 text-[#5C4033]">$0.09</span>
           </div>
         </div>
       </div>
 
-      <div className="mt-1 pt-3 border-t-2 border-slate-800 flex justify-between items-center">
-        <span className="text-[9px] text-slate-500 uppercase font-black italic">Статус білінгу</span>
-        <span className="text-[9px] text-green-400 font-mono font-black tracking-widest bg-green-900/30 px-2 py-0.5 rounded-sm border border-green-500/20">АКТИВНИЙ</span>
+      <div className="mt-2 pt-4 border-t-2 border-[#F5F5DC] flex justify-between items-center">
+        <span className="text-xs text-[#8B4513] font-black uppercase italic">Статус білінгу</span>
+        <span className="text-[10px] text-green-700 font-black tracking-wider bg-green-100 px-3 py-1 rounded-full border-2 border-green-700/20">АКТИВНИЙ</span>
       </div>
     </div>
   );

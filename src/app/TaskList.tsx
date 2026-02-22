@@ -1,3 +1,4 @@
+"use client"
 import React from 'react';
 
 interface Task {
@@ -18,70 +19,72 @@ const dummyTasks: Task[] = [
 
 export function TaskList() {
   return (
-    <div className="flex flex-col h-full bg-slate-900/90 backdrop-blur-xl border-t lg:border-t-0 lg:border-l-4 border-slate-800 w-full lg:w-80 p-6 overflow-y-auto z-30">
-      <div className="flex items-center justify-between mb-8">
-        <h2 className="text-xl font-black italic tracking-tighter text-white uppercase">Цілі системи</h2>
-        <span className="text-[10px] bg-cyan-500/10 text-cyan-400 px-2 py-1 rounded-sm border border-cyan-500/30 font-mono font-bold uppercase tracking-tighter shadow-[2px_2px_0px_rgba(6,182,212,0.2)]">
-          RELEASES
+    <div className="flex flex-col h-full bg-[#fdf6e3] border-t lg:border-t-0 lg:border-l-4 border-[#8B4513]/20 w-full lg:w-96 p-8 overflow-y-auto no-scrollbar z-30">
+      <div className="flex items-center justify-between mb-10">
+        <h2 className="text-2xl font-black text-[#5C4033] uppercase tracking-tight flex items-center gap-2">
+          <span>📋</span> Список справ
+        </h2>
+        <span className="text-[10px] bg-white text-[#8B4513] px-3 py-1 rounded-full border-2 border-[#8B4513]/30 font-bold uppercase tracking-widest shadow-sm">
+          ВЕРСІЯ 2.0
         </span>
       </div>
 
-      <div className="space-y-8">
+      <div className="space-y-10">
         <div>
-          <h3 className="text-[10px] uppercase tracking-[0.2em] text-slate-500 mb-5 font-black flex items-center gap-2">
-            <span className="w-2 h-2 bg-cyan-500" /> Активні
+          <h3 className="text-xs uppercase tracking-widest text-[#8B4513] mb-6 font-black flex items-center gap-2">
+            <span className="w-2 h-2 rounded-full bg-orange-500" /> В роботі
+          </h3>
+          <div className="space-y-5">
+            {dummyTasks.filter(t => t.status === 'active').map(task => (
+              <div key={task.id} className="bg-white border-2 border-[#8B4513] p-6 rounded-2xl shadow-[4px_4px_0px_#8B4513] hover:translate-x-1 transition-transform">
+                <div className="flex items-start gap-4">
+                  <div className="mt-1 w-3 h-3 bg-orange-500 rounded-full animate-ping" />
+                  <p className="text-sm text-[#5C4033] font-bold leading-snug">{task.title}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div>
+          <h3 className="text-xs uppercase tracking-widest text-[#8B4513] mb-6 font-black flex items-center gap-2">
+            <span className="w-2 h-2 rounded-full bg-[#DEB887]" /> Плани
           </h3>
           <div className="space-y-4">
-            {dummyTasks.filter(t => t.status === 'active').map(task => (
-              <div key={task.id} className="group bg-slate-800/50 border-2 border-cyan-500/40 p-5 rounded-lg hover:border-cyan-400 transition-all shadow-[4px_4px_0px_rgba(6,182,212,0.1)]">
-                <div className="flex items-start gap-3">
-                  <div className="mt-1 w-2 h-2 bg-cyan-500 animate-pulse shadow-[0_0_8px_rgba(6,182,212,1)]" />
-                  <p className="text-xs text-white font-bold leading-tight">{task.title}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <div>
-          <h3 className="text-[10px] uppercase tracking-[0.2em] text-slate-500 mb-5 font-black flex items-center gap-2">
-            <span className="w-2 h-2 bg-slate-700" /> Беклог
-          </h3>
-          <div className="space-y-3">
             {dummyTasks.filter(t => t.status === 'todo').map(task => (
-              <div key={task.id} className="bg-slate-800/30 border-2 border-slate-700/50 p-4 rounded-lg hover:bg-slate-800/60 transition-colors">
-                <p className="text-[11px] text-slate-400 font-medium tracking-tight">{task.title}</p>
+              <div key={task.id} className="bg-white/50 border-2 border-[#8B4513]/20 p-5 rounded-xl hover:bg-white transition-colors">
+                <p className="text-sm text-[#5C4033]/70 font-bold tracking-tight">{task.title}</p>
               </div>
             ))}
           </div>
         </div>
 
         <div>
-          <h3 className="text-[10px] uppercase tracking-[0.2em] text-slate-500 mb-5 font-black flex items-center gap-2">
-            <span className="w-2 h-2 bg-green-900" /> Завершено
+          <h3 className="text-xs uppercase tracking-widest text-[#8B4513] mb-6 font-black flex items-center gap-2">
+            <span className="w-2 h-2 rounded-full bg-green-700" /> Виконано
           </h3>
-          <div className="space-y-3 opacity-40">
+          <div className="space-y-4 opacity-50">
             {dummyTasks.filter(t => t.status === 'done').map(task => (
-              <div key={task.id} className="flex items-center gap-3 px-1">
-                <div className="w-3 h-3 border-2 border-green-500/50 rounded-sm flex items-center justify-center">
-                   <div className="w-1.5 h-1.5 bg-green-500 rounded-px" />
+              <div key={task.id} className="flex items-center gap-4 px-2">
+                <div className="w-5 h-5 border-2 border-green-700 rounded-lg flex items-center justify-center bg-green-100">
+                   <span className="text-green-700 text-xs font-bold">✓</span>
                 </div>
-                <p className="text-[11px] text-slate-500 font-bold line-through decoration-slate-700 italic tracking-tight">{task.title}</p>
+                <p className="text-sm text-[#5C4033] font-bold line-through decoration-green-700/40 italic">{task.title}</p>
               </div>
             ))}
           </div>
         </div>
       </div>
 
-      <div className="mt-auto pt-8 border-t-2 border-slate-800/50">
-        <div className="bg-slate-950/50 rounded p-4 text-[9px] font-mono text-slate-500 border border-slate-800">
-          <div className="flex justify-between mb-2">
-            <span className="font-bold">МЕРЕЖА:</span>
-            <span className="text-cyan-500 text-right font-black uppercase tracking-tighter">ШИФРОВАНА</span>
+      <div className="mt-auto pt-10 border-t-2 border-[#8B4513]/10">
+        <div className="bg-white/40 rounded-xl p-5 text-[10px] font-bold text-[#8B4513] border-2 border-[#8B4513]/10 shadow-inner">
+          <div className="flex justify-between mb-3">
+            <span>МЕРЕЖА:</span>
+            <span className="text-[#5C4033] text-right font-black uppercase">ПІДТВЕРДЖЕНО</span>
           </div>
           <div className="flex justify-between">
-             <span className="font-bold">СИНХРОНІЗАЦІЯ:</span>
-             <span className="text-right uppercase tracking-tighter text-slate-300">100.00%</span>
+             <span>ОСТАННЄ ОНОВЛЕННЯ:</span>
+             <span className="text-right text-[#5C4033]">ЩОЙНО</span>
           </div>
         </div>
       </div>
